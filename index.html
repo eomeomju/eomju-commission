@@ -151,8 +151,11 @@ nav {
 /* 히어로 오른쪽 아트 블록 */
 .hero-right { display: grid; grid-template-rows: 1fr 1fr; overflow: hidden; }
 .art-block { display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.art-block-1 { background: var(--blue-bg); }
-.art-block-2 { background: var(--yellow-bg); border-top: 1px solid var(--line); }
+.art-block-1 {
+  background: url('work1.jpg') center/cover no-repeat;
+}
+.art-block-2 { display: none; }
+.hero-right { grid-template-rows: 1fr; }
 
 /* 도형 장식 */
 .art-deco {
