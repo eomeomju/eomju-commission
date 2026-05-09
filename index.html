@@ -85,39 +85,46 @@ nav {
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
-  display: grid; grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: center;
   padding-top: 72px;
+  position: relative;
+  background: url('work1.jpg') center/cover no-repeat;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(30, 60, 100, 0.38);
+  pointer-events: none;
 }
 .hero-left {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 80px 60px 80px 80px; position: relative;
+  padding: 80px 80px;
+  position: relative; z-index: 1;
+  max-width: 700px;
 }
-.hero-left::after {
-  content: ''; position: absolute; right: 0; top: 12%; bottom: 12%;
-  width: 1px; background: var(--line);
-}
+.hero-left::after { display: none; }
+.hero-right { display: none; }
 
 .hero-eyebrow {
   font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--blue); margin-bottom: 24px;
+  color: rgba(255,255,255,0.75); margin-bottom: 24px;
   display: flex; align-items: center; gap: 12px;
 }
-.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--blue); }
+.hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: rgba(255,255,255,0.75); }
 
 .hero-title {
   font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(2.4rem, 4.2vw, 5rem);
-  line-height: 1.12; margin-bottom: 12px; color: var(--ink);
+  line-height: 1.12; margin-bottom: 12px; color: #fff;
   letter-spacing: 0.01em;
   text-transform: none;
 }
-.hero-title em { font-style: normal; color: var(--blue); font-weight: 800; }
+.hero-title em { font-style: normal; color: var(--yellow-soft); font-weight: 800; }
 
 /* 레몬옐로우 밑줄 강조 */
-.hero-title .hl {
-  position: relative; display: inline;
-}
+.hero-title .hl { position: relative; display: inline; }
 .hero-title .hl::after {
   content: ''; position: absolute;
   left: 0; bottom: 2px; right: 0;
@@ -130,32 +137,27 @@ nav {
   font-weight: 300;
   font-size: 0.8rem;
   letter-spacing: 0.18em;
-  color: var(--ink-muted);
+  color: rgba(255,255,255,0.6);
   margin-top: -16px;
   margin-bottom: 32px;
 }
 
 .hero-desc {
-  font-size: 0.91rem; color: var(--ink-soft);
-  line-height: 2; max-width: 360px; margin-bottom: 52px;
+  font-size: 0.91rem; color: rgba(255,255,255,0.75);
+  line-height: 2; max-width: 400px; margin-bottom: 52px;
 }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 12px;
-  text-decoration: none; color: var(--ink);
+  text-decoration: none; color: #fff;
   font-size: 0.8rem; letter-spacing: 0.1em;
   border-bottom: 2px solid var(--yellow);
   padding-bottom: 4px; transition: all 0.3s; width: fit-content;
 }
-.hero-cta:hover { color: var(--blue); border-color: var(--blue); gap: 18px; }
+.hero-cta:hover { color: var(--yellow-soft); border-color: var(--yellow-soft); gap: 18px; }
 
-/* 히어로 오른쪽 아트 블록 */
-.hero-right { display: grid; grid-template-rows: 1fr 1fr; overflow: hidden; }
-.art-block { display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.art-block-1 {
-  background: url('work1.jpg') center/cover no-repeat;
-}
+/* 히어로 오른쪽 아트 블록 — 사용 안 함 */
+.art-block-1 { display: none; }
 .art-block-2 { display: none; }
-.hero-right { grid-template-rows: 1fr; }
 
 /* 도형 장식 */
 .art-deco {
@@ -425,40 +427,6 @@ footer {
       엄주(@eomju_)의 일러스트레이션 의뢰 페이지입니다.<br>
       캐릭터, 인물, 굿즈 디자인 등<br>다양한 작업을 함께합니다.
     </p>
-    <a href="#commission" class="hero-cta">의뢰 시작하기 →</a>
-  </div>
-  <div class="hero-right">
-    <div class="art-block art-block-1">
-      <div class="art-deco">
-        <div class="circle-deco" style="width:200px;height:200px;border-color:rgba(74,107,154,0.15);"></div>
-        <div class="circle-deco" style="width:120px;height:120px;border-color:rgba(74,107,154,0.22);animation-duration:20s;animation-direction:reverse;"></div>
-      </div>
-      <div class="art-placeholder">
-        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="2" width="48" height="48" rx="1" stroke="rgba(74,107,154,0.28)" stroke-width="1"/>
-          <circle cx="19" cy="21" r="6" stroke="rgba(74,107,154,0.28)" stroke-width="1"/>
-          <path d="M2 38 L16 26 L26 35 L37 24 L50 38" stroke="rgba(74,107,154,0.28)" stroke-width="1"/>
-        </svg>
-        <p style="color:rgba(74,107,154,0.45);">작품 이미지</p>
-      </div>
-      <span class="art-label" style="color:rgba(74,107,154,0.38);">Portfolio 01</span>
-    </div>
-    <div class="art-block art-block-2">
-      <div class="art-deco">
-        <div class="circle-deco" style="width:180px;height:180px;border-color:rgba(232,210,42,0.35);animation-duration:25s;"></div>
-        <div class="circle-deco" style="width:80px;height:80px;border-color:rgba(232,210,42,0.5);animation-duration:15s;animation-direction:reverse;"></div>
-      </div>
-      <div class="art-placeholder">
-        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="26" cy="26" r="20" stroke="rgba(200,180,20,0.35)" stroke-width="1"/>
-          <circle cx="26" cy="26" r="9" stroke="rgba(200,180,20,0.35)" stroke-width="1"/>
-          <line x1="26" y1="6" x2="26" y2="46" stroke="rgba(200,180,20,0.28)" stroke-width="1"/>
-          <line x1="6" y1="26" x2="46" y2="26" stroke="rgba(200,180,20,0.28)" stroke-width="1"/>
-        </svg>
-        <p style="color:rgba(160,140,10,0.45);">작품 이미지</p>
-      </div>
-      <span class="art-label" style="color:rgba(160,140,10,0.35);">Portfolio 02</span>
-    </div>
   </div>
 </div>
 
